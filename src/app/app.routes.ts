@@ -11,30 +11,32 @@ export const routes: Routes = [
     path: '',
     component: Home,
     title: 'Shubham Portfolio',
-  },
-  {
-    path: 'about',
-    component: Aboutus,
-    title: 'About',
-  },
-  {
-    path: 'contact',
-    component: Contact,
-    title: 'Contact',
-  },
-  {
-    path: 'services',
-    component: Services,
-    title: 'Services',
-  },
-  {
-    path: 'blog',
-    component: Blog,
-    title: 'Blog',
-  },
-  {
-    path: 'collection',
-    component: Collection,
-    title: 'Collection',
+    children: [
+      {
+        path: 'about',
+        component: Aboutus,
+        title: 'About',
+      },
+      {
+        path: 'contact',
+        component: Contact,
+        title: 'Contact',
+      },
+      {
+        path: 'services',
+        component: Services,
+        title: 'Services',
+      },
+      {
+        path: 'blog',
+        component: Blog,
+        title: 'Blog',
+      },
+      {
+        path: 'collection',
+        component: Collection,
+        title: 'Collection',
+      },
+    ],
   },
 ];
