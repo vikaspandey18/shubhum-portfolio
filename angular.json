@@ -33,7 +33,12 @@
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
               "node_modules/animate.css/animate.min.css",
+              "node_modules/magnific-popup/dist/magnific-popup.css",
               "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/magnific-popup/dist/jquery.magnific-popup.min.js"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",

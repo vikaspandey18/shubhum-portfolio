@@ -1,67 +1,133 @@
 <div id="colorlib-page">
-    <app-sidebar></app-sidebar>
-    <div id="colorlib-main">
-        <app-header title="Contact" subTitle="Contact"></app-header>
-        <section class="ftco-section contact-section">
-            <div class="container">
-                <div class="row d-flex mb-5 contact-info">
-                    <div class="col-md-12 mb-4">
-                        <h2 class="h3 font-weight-bold">Contact Information</h2>
-                    </div>
-                    <div class="w-100"></div>
-                    <div class="col-md-3 d-flex">
-                        <div class="info bg-light p-4">
-                            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 d-flex">
-                        <div class="info bg-light p-4">
-                            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 d-flex">
-                        <div class="info bg-light p-4">
-                            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 d-flex">
-                        <div class="info bg-light p-4">
-                            <p><span>Website</span> <a href="#">yoursite.com</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row block-9">
-                    <div class="col-md-6 d-flex">
-                        <form action="#" class="bg-light p-5 contact-form">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Name">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Email">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="" id="" cols="30" rows="7" class="form-control"
-                                    placeholder="Message"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-                            </div>
-                        </form>
-
-                    </div>
-
-                    <div class="col-md-6 d-flex">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1004.0650234730043!2d72.80654797706876!3d19.34006580220805!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ae77a933a82f%3A0x14857fc9f0883a4a!2sSri%20Ram%20Mandir%20Devastana!5e1!3m2!1sen!2sin!4v1769804535663!5m2!1sen!2sin"
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
+  <app-sidebar></app-sidebar>
+  <div id="colorlib-main">
+    <app-header title="Contact" subTitle="Contact"></app-header>
+    <section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="h3 font-weight-bold">Contact Information</h2>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-md-4 d-flex">
+            <div class="info bg-light p-4">
+              <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
             </div>
-        </section>
-        <app-footer></app-footer>
-    </div><!-- END COLORLIB-MAIN -->
-</div><!-- END COLORLIB-PAGE -->
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="info bg-light p-4">
+              <p><span>Phone:</span> <a href="tel://919637837813"> + 91 96378 37813</a></p>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="info bg-light p-4">
+              <p><span>Email:</span> <a href="mailto:info@shubhum.com"> info@shubhum.com</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="row block-9">
+          <div class="col-md-6 d-flex">
+            <form
+              [formGroup]="contactForm"
+              (ngSubmit)="onSubmit()"
+              class="bg-light p-5 contact-form"
+            >
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Your Name"
+                  formControlName="name"
+                />
+                @if (
+                  contactForm.get('name')?.invalid &&
+                  (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)
+                ) {
+                  @if (contactForm.get('name')?.hasError('required')) {
+                    <div class="text-danger">Name is required</div>
+                  }
+                }
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Your Email"
+                  formControlName="email"
+                />
+                @if (
+                  contactForm.get('email')?.invalid &&
+                  (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)
+                ) {
+                  @if (contactForm.get('email')?.hasError('required')) {
+                    <div class="text-danger">Email is required</div>
+                  }
+                  @if (contactForm.get('email')?.hasError('email')) {
+                    <div class="text-danger">It Should be proper email</div>
+                  }
+                }
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Subject"
+                  formControlName="subject"
+                />
+                @if (
+                  contactForm.get('subject')?.invalid &&
+                  (contactForm.get('subject')?.dirty || contactForm.get('subject')?.touched)
+                ) {
+                  @if (contactForm.get('subject')?.hasError('required')) {
+                    <div class="text-danger">Subject is required</div>
+                  }
+                }
+              </div>
+              <div class="form-group">
+                <textarea
+                  cols="30"
+                  rows="7"
+                  class="form-control"
+                  placeholder="Message"
+                  formControlName="message"
+                ></textarea>
+                @if (
+                  contactForm.get('message')?.invalid &&
+                  (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)
+                ) {
+                  @if (contactForm.get('message')?.hasError('required')) {
+                    <div class="text-danger">Message is required</div>
+                  }
+                }
+              </div>
+              <div class="form-group">
+                <button
+                  type="submit"
+                  [disabled]="contactForm.invalid"
+                  class="btn btn-primary py-3 px-5"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-md-6 d-flex">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1004.0650234730043!2d72.80654797706876!3d19.34006580220805!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ae77a933a82f%3A0x14857fc9f0883a4a!2sSri%20Ram%20Mandir%20Devastana!5e1!3m2!1sen!2sin!4v1769804535663!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    <app-footer></app-footer>
+  </div>
+  <!-- END COLORLIB-MAIN -->
+</div>
+<!-- END COLORLIB-PAGE -->
